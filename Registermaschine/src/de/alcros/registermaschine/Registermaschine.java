@@ -107,7 +107,7 @@ public class Registermaschine {
 	public void execute(long code) {
 		int op = (int) (code >>> 32);
 		int arg = (int)code;
-		System.out.printf("%8x: A: 0x%08x, %s\t%s\n", bz, a, Arrays.toString(registers), codeDbg.get(bz));
+		System.out.printf("%5d: A: %5d, %s\t%s\n", bz, a, Arrays.toString(registers), codeDbg.get(bz));
 		bz++;
 		switch(op) {
 		case (int) NOP: default:
@@ -143,10 +143,10 @@ public class Registermaschine {
 			if(a > 0) bz = arg-1;
 			return;
 		case (int) JLE:
-			if(a < 0) bz = arg-1;
+			if(a <= 0) bz = arg-1;
 			return;
 		case (int) JLT:
-			if(a <= 0) bz = arg-1;
+			if(a < 0) bz = arg-1;
 			return;
 		case (int) JEQ:
 			if(a == 0) bz = arg-1;
@@ -155,7 +155,7 @@ public class Registermaschine {
 			if(a != 0) bz = arg-1;
 			return;
 		case (int) END:
-			System.out.printf("%8x: A: 0x%08x, %s\n", bz, a, Arrays.toString(registers));
+			System.out.printf("%5d: A: %5d, %s\n", bz, a, Arrays.toString(registers));
 			System.exit(0);
 			return;
 		}
