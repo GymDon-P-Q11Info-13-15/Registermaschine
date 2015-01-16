@@ -11,7 +11,7 @@ public class Registermaschine {
 	private long[] code;
 	private ArrayList<String> codeDbg = new ArrayList<String>();
 	
-	private static final int DELAY = 100;
+	private static final int DELAY = 0;
 	
 	public static void main(String[] args) throws Exception {
 		new Registermaschine(new FileInputStream(args[0]));
@@ -28,7 +28,6 @@ public class Registermaschine {
 		code = new long[codeList.size()];
 		for(int i = 0; i < code.length; i++)
 			code[i] = codeList.get(i);
-		Scanner s = new Scanner(System.in);
 		while (true) {
 			execute(code[bz]);
 			try {
